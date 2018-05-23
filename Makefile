@@ -97,15 +97,10 @@ install-conda: ## install Miniconda
 ifndef CONDA_VERSION
 	wget $(MINICONDA_URL) -O miniconda.sh
 	bash miniconda.sh -b
-	export PATH="$(HOME)/miniconda/bin:$(PATH)"
-	conda config --system --add channels conda-forge
-	conda config --system --add channels defaults
-	conda update -q conda
-	conda info -a
 endif
 .PHONY: install-conda
 
-create-env: install-conda ## create conda environment
+create-env: ## create conda environment
 	conda env create -f environment.yml -q --force
 .PHONY: create-env	
 
